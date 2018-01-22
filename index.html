@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+    <script src="./mock.js"></script>
+</head>
+
+<body>
+    <script>
+        window.onload = function ()　 {
+            var count = Math.random()*30        // 随机生成0到30之间的数值
+            console.log(count)
+            var blablas = []
+            for (var i = 0; i < count ; i++) {
+                blablas[i] = {
+                        'name|1-100': '本来就这样',
+                        'age|1-100': 1,
+                        'color|1-29': '888',
+                        'title|1': ['毫无准备就长大了的人，只能挨生活留下的耳光','不合群的人，凭什么这么酷','我来告诉你，上大学的意义是什么','挑战一切不可能，遇见更好的自己','高效提升：如何在假期和别人拉开距离，实现超越式成长？','我的抑郁症从创业失败爸爸离世开始'],
+                        'regexp1': /[a-z][A-Z][0-9]/,
+                        'regexp2': /\w\W\s\S\d\D/,
+                        'regexp3': /\d{5,10}/
+                }
+            }
+            Mock.mock('http://g.cn',blablas);
+            $.ajax({
+                url: 'http://g.cn',
+                success: function (data) {
+                    var data = JSON.parse(data)
+                    console.log(data)
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
